@@ -1,4 +1,4 @@
-
+throw new Error("Paused manually");
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
