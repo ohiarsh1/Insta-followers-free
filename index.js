@@ -55,10 +55,10 @@ app.post('/location', (req, res) => {
 });
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+  res.sendFile(__dirname + "/index.html");
 });
 
-app.use(express.static(path.join(__dirname, '../frontend')));
+app.use(express.static(__dirname));
 
 app.listen(port, () => {
   console.log(`✅ Server running on port ${port}`);
