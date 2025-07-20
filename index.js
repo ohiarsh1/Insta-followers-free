@@ -1,4 +1,4 @@
-throw new Error("Paused manually");
+throw new Error("App manually paused to save Render hours");
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
