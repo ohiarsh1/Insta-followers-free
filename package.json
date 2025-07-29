@@ -1,5 +1,5 @@
 {
-  "name": "instagram-tool-backend",
+  "name": "i follow-YOU",
   "version": "1.0.0",
   "description": "Backend server for saving Instagram user data and location",
   "main": "index.js",
