@@ -1,0 +1,17 @@
+{
+  "name": "ifollow-YOU",
+  "version": "1.0.0",
+  "description": "ifollow-YOU",
+  "v1.1": "index.js", 
+  "scripts": {
+    "start": "node index.js",
+    "build": "echo 'No build process needed'"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "axios": "^1.6.7"
+  },
+  "author": "",
+  "license": "ISC"
+}
